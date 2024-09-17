@@ -61,6 +61,29 @@
             font-size: 11px;
         }
 
+        /* 챗봇 아이콘 스타일 */
+        #chatbot-icon {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 1000;
+            animation: move-left-right 2s ease-in-out infinite;
+        }
+
+        @keyframes move-left-right {
+        0% {
+            transform: translateX(-10px); /* 왼쪽으로 이동 */
+        }
+        50% {
+            transform: translateX(10px); /* 오른쪽으로 이동 */
+        }
+        100% {
+            transform: translateX(-10px); /* 원래 위치로 돌아옴 */
+        }
+}
+
+
                 /* 챗봇 창 스타일 */
         #chatbot {
           position: fixed;
