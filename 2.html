@@ -44,8 +44,14 @@
                 -1px 1px 0 #000; /* 왼쪽 아래 */
         }
         p {
-            color: #555;
+            color: #f8dede;
             text-align: left;
+            font-size: 12px;
+            text-shadow: 
+                1px 1px 0 #000, /* 오른쪽 아래 */
+                -1px -1px 0 #000, /* 왼쪽 위 */
+                1px -1px 0 #000, /* 오른쪽 위 */
+                -1px 1px 0 #000; /* 왼쪽 아래 */
         }
         input[type="text"] {
             width: 100%; /* 입력 필드의 너비를 컨테이너의 100%로 설정 */
@@ -88,15 +94,18 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h2>Chloe wants</h2>
-        <p>1. to get married<br>2. Justin to be happy<br>3. Justin to love her more<br>4. Justin</p>
+        <h2>Find fake Justin!</h2>
+        <p>A: I was born in Australia, 25th of Sep 1996.
+            <br>B: I can swim and cook and really good at them. I'm just smart.
+            <br>C: I do everything for my girlfriend but only if I want to.
+            <br>D: I am not Justin.</p>
 
         <input type="text" id="input" placeholder="Type correct number">
         <button type="submit" id="check" onclick="next()"></button>
 
         <!-- 힌트 1과 힌트 2를 각각 나눠서 설정 -->
-        <div id="hint1" class="hint">Hint 1: All I want </div>
-        <div id="hint2" class="hint">Hint 2: Wish for everyday.</div>
+        <div id="hint1" class="hint">Hint 1: Condition? </div>
+        <div id="hint2" class="hint">Hint 2: kkk</div>
     </div>
 
     <script type="text/javascript">
