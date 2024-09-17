@@ -92,15 +92,15 @@
         <input type="text" id="username" placeholder="Username" />
         <input type="password" id="password" placeholder="Password" />
         <button onclick="login()"></button>
-        <div id="hint1" class="hint">Hint 1: What do I call you?.</div>
-        <div id="hint2" class="hint">Hint 2: You are (M)(L) <3</div>
+        <div id="hint1" class="hint">Hint 1: You</div>
+        <div id="hint2" class="hint">Hint 2: Who are you?</div>
     </div>
 
     <script>
     let incorrectCount = 0; // 오답 횟수를 추적하는 변수
 
     function login() {
-        const correctUsername = 'Honnie';  // 올바른 아이디
+        const correctUsername = 'Juzzy';  // 올바른 아이디
         const correctPassword = 'Mylove';  // 올바른 비밀번호
 
         const username = document.getElementById('username').value;
