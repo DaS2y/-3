@@ -60,6 +60,91 @@
             color: #0e0f10;
             font-size: 11px;
         }
+
+                /* 챗봇 창 스타일 */
+        #chatbot {
+          position: fixed;
+            bottom: 120px;
+            left: 10px;
+            width: 250px;
+            height: 350px;
+            border: 1px solid #487fff;
+            border-radius: 15px; /* 모서리를 살짝 둥글게 설정 */
+            background-size: cover; /* 이미지가 컨테이너 전체를 덮도록 설정 */
+            background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+            background-image: url('/Volumes/T7/훈이생일<3/image/chat.jpeg');
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none; /* 처음에 숨김 */
+        }
+
+        #chat-window {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #messages {
+            /* flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc; */
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 왼쪽 정렬 */
+        }
+
+        #user-input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+        }
+        /* 사용자 메시지 스타일 */
+        .user-message {
+            text-align: right;
+            background-color: transparent; /* 사용자 메시지 배경색 */
+            color: #ff71f1; /* 사용자 메시지 텍스트 색상 */
+            font-size: 11px; /* 사용자 메시지 폰트 크기 */
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 80%; /* 메시지 너비 제한 */
+            margin-bottom: 5px; /* 메시지 간격 */
+            align-self: flex-end; /* 왼쪽 정렬 */
+            text-shadow: 
+                1px 1px 0 #000, /* 오른쪽 아래 */
+                -1px -1px 0 #000, /* 왼쪽 위 */
+                1px -1px 0 #000, /* 오른쪽 위 */
+                -1px 1px 0 #000; /* 왼쪽 아래 */
+            
+        }
+
+        /* 봇 메시지 스타일 */
+        .bot-message {
+            text-align: left;
+            background-color: transparent; /* 봇 메시지 배경색 */
+            color: #69b9ff; /* 봇 메시지 텍스트 색상 */
+            font-size: 11px; /* 봇 메시지 폰트 크기 */
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 80%; /* 메시지 너비 제한 */
+            margin-bottom: 5px; /* 메시지 간격 */
+            align-self: flex-start; /* 오른쪽 정렬 */
+            text-shadow: 
+                1px 1px 0 #000, /* 오른쪽 아래 */
+                -1px -1px 0 #000, /* 왼쪽 위 */
+                1px -1px 0 #000, /* 오른쪽 위 */
+                -1px 1px 0 #000; /* 왼쪽 아래 */
+           
+        }
+
+
+        
         button {
             background-image: url('image/Daisy.png');
             background-size: cover; /* 이미지가 버튼의 전체 영역을 덮도록 설정 */
@@ -76,6 +161,23 @@
         button:hover {
             opacity: 0.8; /* 이미지 버튼에 호버 효과 추가 */
         }
+
+        .button_1{
+          background-color: #9df0ff; /* 녹색 배경 */
+          color: white; /* 글씨 색상 */
+          border: none;
+          padding: 8px 16px;
+          text-align: center;
+          font-size: 14px;
+          border-radius: 8px; /* 둥근 모서리 */
+          cursor: pointer;
+          transition: background-color 0.3s ease; /* 부드러운 배경색 전환 */
+          width: auto; /* 버튼의 가로 크기 자동 조정 */
+          height: auto; /* 버튼의 세로 크기 자동 조정 */
+        }
+        .button_1:hover {
+        background-color: #f197c0; /* 마우스를 올렸을 때의 색상 */
+}
         /* @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -117,5 +219,80 @@
 
         <button onclick="location.href='https://das2y.github.io/-3/1Login'"></button>
     </div>
+
+    <div id="chatbot">
+      <div id="chat-window">
+          <div id="messages"></div>
+          <input type="text" id="user-input" placeholder="Type a message..." />
+          <button class="button_1" onclick="sendMessage()">Send</button>
+      </div>
+  </div>
+
+  <script>
+      function toggleChatbot() {
+          const chatbot = document.getElementById('chatbot');
+          if (chatbot.style.display === 'none') {
+              chatbot.style.display = 'block';
+            } else {
+                chatbot.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+        const input = document.getElementById('user-input');
+        const messages = document.getElementById('messages');
+        const userMessage = input.value.trim().toLowerCase(); // 사용자 입력을 소문자로 변환
+        // 하는 이유는 Hello, HELLO, HEllO라고해도 대답을 받을 수 있게하기 위해서
+
+
+    if (userMessage.trim() !== '') {
+        // 사용자가 입력한 메시지를 추가
+        const userMessageElement = document.createElement('div');
+        userMessageElement.className = 'user-message'; // 사용자 메시지 클래스 적용
+        userMessageElement.textContent = userMessage;
+        messages.appendChild(userMessageElement);
+
+        // 입력 필드 초기화
+        input.value = '';
+
+        // 봇의 응답을 0.5초 뒤에 추가
+        setTimeout(() => {
+            const botMessageElement = document.createElement('div');
+            botMessageElement.className = 'bot-message'; // 봇 메시지 클래스 적용
+
+
+           // 사용자 입력에 따른 조건문
+           let botResponse = '';
+            if (userMessage.includes('hello')) {
+                botResponse = "dAIsy: Hellew!! Meow Meow!! Do you know who I am?";
+            } else if (userMessage.includes('hi')) {
+                botResponse = "dAIsy: Hiew!! Meow Meow!! Do you know who I am?";
+            }else if (userMessage.includes('daisy')) {
+                botResponse = "dAIsy: HeHE!! That's right! Happy Birthday <3 ";
+            } else if (userMessage.includes('thank you')) {
+                botResponse = "dAIsy: Are you ready?!";
+            } else if (userMessage.includes('yes')) {
+                botResponse = "dAIsy: Good!!! What is your answer?!";
+            } else if (userMessage.includes('hint')) {
+                botResponse = "dAIsy: Eric";
+            } else if (userMessage.includes('i love honnie')) {
+                botResponse = "dAIsy: MEOWWWWWW!!! Carract answer!!! You can move on to next step! And if you ever see me againi, type Hi or hellow to start the conversation <3";
+            } else if (userMessage.includes('i love you')) {
+                botResponse = "dAIsy: I lovew too <3<3<3 Play with me more!!!!";
+            }else {
+                botResponse = "dAIsy: Meow?";
+            }
+
+            botMessageElement.textContent = botResponse;
+            messages.appendChild(botMessageElement);
+
+            // 스크롤을 자동으로 가장 아래로 이동
+            messages.scrollTop = messages.scrollHeight;
+        }, 500); // 500ms (0.5초) 지연
+    }
+}
+
+
+    </script>
 </body>
 </html>
