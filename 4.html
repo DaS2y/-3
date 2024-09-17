@@ -95,8 +95,8 @@
         <button type="submit" id="check" onclick="next()"></button>
 
         <!-- 힌트 1과 힌트 2를 각각 나눠서 설정 -->
-        <div id="hint1" class="hint">Hint 1: H e l l o </div>
-        <div id="hint2" class="hint">Hint 2: Country</div>
+        <div id="hint1" class="hint">Hint 1: Country </div>
+        <div id="hint2" class="hint">Hint 2: Another language?</div>
     </div>
 
     <script type="text/javascript">
@@ -104,7 +104,7 @@
 
     function next() {
         let input = document.getElementById('input').value;
-        if (input == "Chloe") {
+        if (input == "클로이") {
             alert('Bravo!');
             // 정답일 경우 다음 사이트로 이동
             window.location.href = "https://das2y.github.io/-3/5.html";
